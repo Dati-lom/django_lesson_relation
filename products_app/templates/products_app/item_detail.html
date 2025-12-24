@@ -1,0 +1,16 @@
+<h1>{{ item.name }}</h1>
+<p>Price: {{ item.price }}</p>
+<p>Category: {{ item.category.name }}</p>
+<p>Tags:</p>
+<ul>
+    {% for tag in item.tags.all %}
+        <li>{{ tag.name }}</li>
+    {% endfor %}
+</ul>
+<p>Images:</p>
+<ul>
+    {% for image in item.images.all %}
+        <li>{{ image.url }}</li>
+    {% endfor %}
+</ul>
+

@@ -1,0 +1,15 @@
+<h1>Categories</h1>
+<ul>
+    {% for category in categories %}
+        <li>
+            <strong>{{ category.name }}</strong>
+            <ul>
+                {% for item in category.items.all %}
+                    <li>{{ item.name }} - {{ item.price }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <hr>
+    {% endfor %}
+</ul>
+

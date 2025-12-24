@@ -2,17 +2,21 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 from django.contrib.contenttypes.models import ContentType
 
-# Create your models here.
-
-
-
 class Image(models.Model):
     url = models.CharField(max_length=255)
+
     #რომელს უყურებს
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     #კონკრეტულად რას უყურებს
     object_id = models.PositiveIntegerField()
+
+
     content_object = GenericForeignKey('content_type', 'object_id')
+    #
+    # tag_fk = models.ForeignKey()
+    # category_fk = models.ForeignKey()
+    # item_fk = models.ForeignKey()
+
 
     def __str__(self):
         return self.url
@@ -36,6 +40,7 @@ class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='items')
     tags = models.ManyToManyField(Tag, related_name='items')
     images = GenericRelation(Image)
+    active = models.BooleanField()
 
     def __str__(self):
         return self.name

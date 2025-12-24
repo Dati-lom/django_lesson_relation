@@ -1,0 +1,17 @@
+<h1>Items</h1>
+</ul>
+    {% endfor %}
+        <hr>
+        </li>
+            Images count: {{ item.images.count }}
+            <br>
+            {% endfor %}
+                {{ tag.name }}{% if not forloop.last %}, {% endif %}
+            {% for tag in item.tags.all %}
+            Tags:
+            <br>
+            <strong>{{ item.name }}</strong> - Category: {{ item.category.name }}
+        <li>
+    {% for item in items %}
+<ul>
+
