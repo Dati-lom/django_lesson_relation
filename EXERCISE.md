@@ -4,10 +4,10 @@
 
 დააკონფიგურირეთ `CategoryAdmin` შემდეგი მოთხოვნებით:
 
-- **list_display**: გამოაჩინეთ `id`, `name`, და `description`
+- **list_display**: გამოაჩინეთ `id`, `name`
 - **search_fields**: ძიება შესაძლებელი უნდა იყოს `name`-ის მიხედვით
 - **ordering**: კატეგორიები დალაგებული უნდა იყოს `name`-ის ანბანის მიხედვით
-- **fields**: რედაქტირებისას გამოაჩინეთ მხოლოდ `name` და `description`
+- **fields**: რედაქტირებისას გამოაჩინეთ მხოლოდ `name`
 
 ### დავალება 1.2: Item ModelAdmin
 
