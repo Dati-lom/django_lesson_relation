@@ -1,11 +1,38 @@
 from rest_framework.decorators import api_view
+from rest_framework.generics import GenericAPIView
+from rest_framework.mixins import CreateModelMixin, ListModelMixin
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from .models import Item, Category
-from .serializers import ItemSerializer, CategorySerializer, TagInputSerializer
+from rest_framework.viewsets import ViewSet
+
+from .models import Item, Category, Image
+from .serializers import ItemSerializer, CategorySerializer, TagInputSerializer, ImageSerializer
 
 
+class ItemListView(GenericAPIView, CreateModelMixin, ListModelMixin):
+
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+
+    def get(self,request):
+        return self.list(request)
+
+
+    def post(self,request):
+        return self.create(request)
+
+
+class ImageListView(GenericAPIView, ListModelMixin, CreateModelMixin):
+
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
+
+    def get(self,request):
+        return self.list(request)
+
+    def post(self,request):
+        return self.create(request)
 
 
 @api_view(["GET", "POST"])
